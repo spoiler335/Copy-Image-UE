@@ -13,5 +13,8 @@ UCLASS()
 class IMAGE_COPIER_API AImage_CopierGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
+protected:
+	virtual void BeginPlay() override;
 	
 };
