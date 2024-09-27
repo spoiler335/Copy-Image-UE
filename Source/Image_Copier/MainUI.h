@@ -10,6 +10,9 @@
 #include "HAL/PlatformApplicationMisc.h"
 #include "UObject/EnumProperty.h"
 #include "Image_Utils.h"
+#include "Components/EditableTextBox.h"
+#include "Components/TextBlock.h"
+#include "TimerManager.h"
 #include "MainUI.generated.h"
 
 /**
@@ -25,13 +28,24 @@ protected:
 
 private:
 	FString GetImageTypeAsString(ImageType ImageTypeValue);
-	ImageType GetImageTypeFromString(const FString& EnumName);
-	
+	ImageType GetImageTypeFromString(const FString &EnumName);
+	void ShowAndHideWarningtext();
+	void HideWarningtext();
+
+	int32 InSizeX = 256;
+	int32 InSizeY = 256;
+
 	UFUNCTION()
 	void TakeScreenShot();
 
 	UFUNCTION()
 	void OnSelectionChanged(FString SelectedItem, ESelectInfo::Type SelectionType);
+
+	UFUNCTION()
+	void OnInputXChanged(const FText &Text);
+
+	UFUNCTION()
+	void OnInputYChanged(const FText &Text);
 
 	// ScreenShotButton
 	UButton *ssButton;
@@ -39,6 +53,11 @@ private:
 	// Image-type
 	ImageType imageType;
 
-
 	UComboBoxString *imageTypeSelector;
+
+	UEditableTextBox *inputX;
+
+	UEditableTextBox *inputY;
+
+	UTextBlock *warningText;
 };
