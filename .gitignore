@@ -57,6 +57,9 @@ Build/*
 Build/*/**
 !Build/*/PakBlacklist*.txt
 
+/[Bb]uild/
+/[Bb]uilds/
+
 # Don't ignore icon files in Build
 !Build/**/*.ico
 
